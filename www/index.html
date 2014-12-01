@@ -18,21 +18,15 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
 
     <script>
 // Ionic Starter App
-
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic'])
-
+angular.module('starter', ['ionic'])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -47,8 +41,13 @@ angular.module('app', ['ionic'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
 
+.controller("LoginController",function(){
+  this.username = "uName";
+  this.password = "pWord";
+})
+
+.config(function($stateProvider, $urlRouterProvider) {
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
@@ -70,46 +69,62 @@ angular.module('app', ['ionic'])
       templateUrl: 'page8.html'
     })
     ;
-
   // if none of the above states are matched, use this as the fallback
   
   $urlRouterProvider.otherwise('/login');
   
-
 });
+
 
 
     </script>
   </head>
-  <body ng-app="app" animation="slide-left-right-ios7">
+  <body ng-app="starter" animation="slide-left-right-ios7">
   <div>
     <div>
-        <ion-nav-bar class="bar-stable">
+        <ion-nav-bar class="bar-dark">
             <ion-nav-back-button class="button-icon icon ion-ios7-arrow-back">Back</ion-nav-back-button>
         </ion-nav-bar>
         <ion-nav-view></ion-nav-view>
     </div>
 </div>
+
+
 <script id="page5.html" type="text/ng-template">
 <ion-view title="Day by Day">
     <ion-content padding="true" class="has-header">
-        <form>
+        <form ng-controller = "LoginController as login">
             <ion-list>
+
+                <div class="spacer" style="height: 40px;"></div>
+
                 <label class="item item-input" name="userName">
                     <span class="input-label">Username</span>
                     <input type="text" placeholder="">
                 </label>
+
+                <div class="spacer" style="height: 40px;"></div>
+
                 <label class="item item-input" name="credentials">
                     <span class="input-label">Password</span>
                     <input type="password" placeholder="">
                 </label>
+
             </ion-list>
+
             <div class="spacer" style="height: 40px;"></div>
+
             <button class="button button-royal button-block">Log in</button>
             <a href="#/signup" class="button button-positive button-clear button-block">Or create an account</a>
+
+            <p>{{login.username}}</p>
+            <p>{{login.password}}</p>
+
         </form>
     </ion-content>
 </ion-view></script>
+
+
 <script id="page6.html" type="text/ng-template">
 <ion-view title="Signup">
     <ion-content padding="true" scroll="false" class="has-header">
@@ -140,6 +155,8 @@ angular.module('app', ['ionic'])
         </form>
     </ion-content>
 </ion-view></script>
+
+
 <script id="page8.html" type="text/ng-template">
 <ion-view title="Summaries ">
     <ion-tabs class="tabs-royal tabs-icon-top">
