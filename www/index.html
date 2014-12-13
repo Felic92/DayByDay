@@ -40,14 +40,14 @@
 
                 <label class="item item-input" name="userName">
                     <span class="input-label">Username</span>
-                    <input type="text" placeholder="">
+                    <input ng-model="username" type="text" placeholder="">
                 </label>
 
                 <div class="spacer" style="height: 40px;"></div>
 
                 <label class="item item-input" name="credentials">
                     <span class="input-label">Password</span>
-                    <input type="password" placeholder="">
+                    <input ng-model="password" type="password" placeholder="">
                 </label>
 
             </ion-list>
@@ -57,8 +57,8 @@
             <a href="#/tabs" class="button button-positive button-block">Log in</a>
             <a href="#/signup" class="button button-positive button-clear button-block">Or create an account</a>
 
-            <p>{{login.username}}</p>
-            <p>{{login.password}}</p>
+            <p>{{username}}</p>
+            <p>{{password}}</p>
 
         </form>
     </ion-content>
